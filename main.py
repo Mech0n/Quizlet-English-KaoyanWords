@@ -14,22 +14,19 @@ ErrIciba = -1
 def words():
     # 生成输出到csv的words :
     # eg :
-    # [
-    #   ['asd', 'n.asdsa']
-    #   ['asd', 'n.asdsd']
-    # ]
+    # {
+    #   'asd' : 'n.asdsa',
+    #   'ass' : 'n.asdsd'
+    # }
     querys = from_excel(InFilename)
 
-    res = []
+    res = {}
     for query in querys:
         print('[Info]Word function : Find %s .' % query.lower())
         word_query = Dictionary.get(query.lower())
         if word_query['errorCode'] is ErrIciba:
             continue
-        word_res = []
-        word_res.append(word_query["query"])
-        word_res.append(word_query["value"])
-        res.append(word_res)
+        res[word_query["query"]] = word_query["value"]
     
     return res
 
@@ -55,8 +52,8 @@ def to_csv(filename, words):
         # eg:
         #   spamwriter.writerow(['Spam', 'assss'])
         #   spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
-        for word in words:
-            spamwriter.writerow(word)
+        for key, value in words.items():
+            spamwriter.writerow([key, value])
 
 if __name__ == '__main__':
     to_csv(OutFilename, words())
