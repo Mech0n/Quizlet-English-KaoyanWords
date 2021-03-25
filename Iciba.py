@@ -1,6 +1,7 @@
 import requests
 import re
 from bs4 import BeautifulSoup
+from rich import print
 
 class Iciba(object):
 
@@ -49,12 +50,12 @@ class Iciba(object):
         res = {}
         response = self.query(word)
         if response is None:
-            print("[ERROR] Iciba.get() : Find %s Failed." % word)
+            print("[bold red][ERROR][/bold red] Iciba.get() : Find \"%s\" Failed." % word)
             res["errorCode"] = self.ErrIciba
             res["query"] = word
             res["value"] = None
         else :
-            print("[INFO] Iciba.get() : Find %s ." % word)
+            print("[bold yellow][INFO][/bold yellow] Iciba.get() : Find \"%s\" ." % word)
             res["errorCode"] = 0
             res["query"] = word
             res["value"] = response

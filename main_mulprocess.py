@@ -20,7 +20,9 @@ ErrIciba = -1
 query_res = {}
 
 def word(query):
-    print('[INFO]Word function : Find %s .' % query.lower())
+    # eg: 
+    #   query = "good"
+    print('[bold yellow][INFO][/bold yellow] word() : Find \"%s\" .' % query.lower())
     word_query = Dictionary.get(query.lower())
     if word_query['errorCode'] is ErrIciba:
         return ErrIciba
@@ -64,4 +66,4 @@ if __name__ == '__main__':
     to_csv(OutFilename, query_res)
     end = time.time()
     print('-' * 0x20)
-    print('[INFO] Use time %s' % (end - start))
+    print('[bold yellow][INFO][/bold yellow] main() : Use time %s' % (end - start))

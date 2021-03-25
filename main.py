@@ -25,7 +25,7 @@ def words():
 
     res = {}
     for query in querys:
-        print('[Info]Word function : Find %s .' % query.lower())
+        print('[bold yellow][INFO][/bold yellow] word function : Find \"%s\" .' % query.lower())
         word_query = Dictionary.get(query.lower())
         if word_query['errorCode'] is ErrIciba:
             continue
@@ -63,4 +63,4 @@ if __name__ == '__main__':
     to_csv(OutFilename, words())
     end = time.time()
     print('-' * 0x20)
-    print('[INFO] Use time %s' % (end - start))
+    print('[bold yellow][INFO][/bold yellow] main() : Use time %s' % (end - start))
