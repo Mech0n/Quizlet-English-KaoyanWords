@@ -10,5 +10,10 @@
   python main.py
   ```
 
+  多线程版：
+  ```shell
+  python main_mulprocess.py
+  ```
+
 - 将生成的文件`eggs.csv`中的内容加入到词汇集。
 
