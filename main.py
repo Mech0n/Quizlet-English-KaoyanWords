@@ -3,6 +3,9 @@ import xlrd
 from rich import print
 from Iciba import Iciba
 
+# debug 
+import time
+
 # 你Diy的单词本
 InFilename = 'data.xls'
 # 输出文本
@@ -56,4 +59,8 @@ def to_csv(filename, words):
             spamwriter.writerow([key, value])
 
 if __name__ == '__main__':
+    start = time.time()
     to_csv(OutFilename, words())
+    end = time.time()
+    print('-' * 0x20)
+    print('[INFO] Use time %s' % (end - start))
